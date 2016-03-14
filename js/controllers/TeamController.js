@@ -210,32 +210,70 @@ function revengeCtrl($http, $log) {
             });
 
     }
+///http://data.nba.com/data/1m/json/nbacom/2015/gameline/20160314/games.json
 
+////use below to extract games
+// var collectedteams = []
+// for (var i = 0; i < hello.games.length; i++) {
+//     var temp_collect = []
+//     temp_collect.push(hello.games[i].teams[0].id)
+//     temp_collect.push(hello.games[i].teams[1].id)
+//     collectedteams.push(temp_collect)
+// }
+// console.log(JSON.stringify(collectedteams))
 
-
+//NBA scoreboard section of API has been disabled publicly. Must hardcode Data
     // START FETCHING REVENGE DATA
     // START FETCHING REVENGE DATA
+
     function getRevenge() {
+        var monday = [[1610612742,1610612766],[1610612743,1610612748],[1610612741,1610612761],[1610612765,1610612764],[1610612763,1610612745],[1610612757,1610612760],[1610612750,1610612756],[1610612739,1610612762],[1610612740,1610612744]]
+
+        var tuesday = [[1610612738,1610612754],[1610612743,1610612753],[1610612755,1610612751],[1610612761,1610612749],[1610612746,1610612759],[1610612758,1610612747]]
+
+        var wednesday = [[1610612760,1610612738],[1610612753,1610612766],[1610612742,1610612739],[1610612741,1610612764],[1610612737,1610612765],[1610612750,1610612763],[1610612746,1610612745],[1610612740,1610612758],[1610612752,1610612744]]
+
+        var thursday = [[1610612761,1610612754],[1610612764,1610612755],[1610612766,1610612748],[1610612743,1610612737],[1610612751,1610612741],[1610612763,1610612749],[1610612757,1610612759],[1610612756,1610612762]]
+
+        var friday = [[1610612739,1610612753],[1610612760,1610612755],[1610612758,1610612765],[1610612738,1610612761],[1610612750,1610612745],[1610612757,1610612740],[1610612744,1610612742],[1610612756,1610612747]]
+
+        var saturday = [[1610612743,1610612766],[1610612751,1610612765],[1610612760,1610612754],[1610612752,1610612764],[1610612745,1610612737],[1610612739,1610612748],[1610612762,1610612741],[1610612746,1610612763],[1610612744,1610612759]]
+
+        var sunday = [[1610612757,1610612742],[1610612753,1610612761],[1610612738,1610612755],[1610612746,1610612740],[1610612762,1610612749],[1610612758,1610612752]]
+
         // search the api by the current date
         var newDate = new Date();
         var currentDate = ( String(newDate.getMonth() + 1) + "/" + String(newDate.getUTCDate()) +"/"+ String(newDate.getUTCFullYear()))
         var currentDateDBFriendly = ( String(newDate.getMonth() + 1) + "-" + String(newDate.getUTCDate()) +"-"+ String(newDate.getUTCFullYear()))
         self.thisDate.push(currentDateDBFriendly)
-        $http
-            .jsonp('http://stats.nba.com/stats/scoreboard/?GameDate='+ currentDate +'&LeagueID=00&DayOffset=0&callback=JSON_CALLBACK')
-            .then(function (response) {
-                // temporary data check for the api
-                // self.all = response.data.resultSets[0].rowSet;
-                // store the necessary data to use as argument in next function
-                var collecterOfData = response.data.resultSets[0].rowSet;
-                $log.log(collecterOfData);
-                // call function to create created nested arrays to sort through
-                $log.log("amount of teams playing " +  collecterOfData.length)
-                getTeamPlayers(collecterOfData);
-            })
-                .catch(function (res) {
-                $log.error('failure',res);
-            });
+        if (self.thisDate == "3-14-2016"){
+            getTeamPlayers(monday)
+            console.log("monday");
+        } else if (self.thisDate == "3-15-2016") {
+            getTeamPlayers(tuesday)
+            console.log("tuesday");
+        } else if (self.thisDate == "3-16-2016") {
+            getTeamPlayers(wednesday)
+            console.log("wednesday");
+        } else if (self.thisDate == "3-17-2016"){
+            getTeamPlayers(thursday)
+            console.log("thursday");
+        } else if (self.thisDate == "3-18-2016") {
+            getTeamPlayers(friday)
+            console.log("friday");
+        } else if (self.thisDate == "3-19-2016"){
+            getTeamPlayers(saturday)
+            console.log("saturday");
+        } else {
+            getTeamPlayers(sunday)
+            console.log("sunday");
+        }
+
+
+
+
+
+        console.log(self.thisDate);
     }
 
     // function to get all team ID's and nest them to create one array
@@ -243,11 +281,13 @@ function revengeCtrl($http, $log) {
         var idArray = [];
         for (var i = 0; i < teamInfo.length; i++) {
             var nestTeamArr = [];
-            nestTeamArr.push(teamInfo[i][6]);
-            nestTeamArr.push(teamInfo[i][7]);
+            nestTeamArr.push(teamInfo[i][0]);
+            nestTeamArr.push(teamInfo[i][1]);
             idArray.push(nestTeamArr)
         }
         // time to get hit the api again with current data
+        console.log(idArray);
+        console.log(teamInfo);
         splittingTeams(idArray)
     }
 

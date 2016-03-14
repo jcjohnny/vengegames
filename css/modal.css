@@ -1,0 +1,238 @@
+/* General styles for the modal */
+
+/*
+Styles for the html/body for special modal where we want 3d effects
+Note that we need a container wrapping all content on the page for the
+perspective effects (not including the modals and the overlay).
+*/
+.md-trigger {
+    position: absolute;
+    z-index: 30;
+    right: 5%;
+    top: 20px;
+    font-weight: 600;
+    word-spacing: 3px;
+    padding: 5px;
+}
+
+.md-trigger:hover {
+    background-color: #000;
+    -o-transition: .5s;
+    -ms-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .6s;
+}
+.md-perspective,
+.md-perspective body {
+	height: 100%;
+	overflow: hidden;
+}
+
+.md-perspective body  {
+	background: #222;
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
+	perspective: 600px;
+}
+
+
+.md-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 55%;
+	max-width: 100%;
+	min-width: 320px;
+	height: auto;
+	z-index: 2000;
+	visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	-moz-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.md-show {
+	visibility: visible;
+}
+
+.md-overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	opacity: 0;
+	background: rgba(210, 210, 210, 0.65);
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.md-show ~ .md-overlay {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Content styles */
+.md-content {
+	color: #fff;
+	background: #292929;
+	position: relative;
+	border-radius: 3px;
+	margin: 0 auto;
+}
+
+.md-content h3 {
+    margin: 0;
+    padding: 9px;
+    text-align: center;
+    font-size: 2.4em;
+    font-weight: 300;
+    background: rgb(0, 0, 0);
+    border-radius: 3px 3px 0 0;
+    letter-spacing: normal;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.md-content > div {
+    padding: 15px 40px 30px;
+    margin: 0;
+    font-weight: 300;
+    font-size: 1.15em;
+    background-color: white;
+    border-top: 1px solid;
+    color: black;
+}
+
+.md-content > div p {
+    margin: 0;
+    padding: 60px 50px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.md-content > div ul a {
+    color: black;
+}
+
+
+.contact {
+    font-size: 16px;
+}
+
+p.copy {
+    font-size: 15px;
+}
+
+.md-content > div ul {
+    margin: 20px 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.md-content > div ul li {
+    padding: 5px 0;
+    margin: 0px 6%;
+}
+
+.md-content button {
+	display: block;
+	margin: 0 auto;
+	font-size: 0.8em;
+}
+
+.md-close {
+    text-align: center;
+    background-color: black;
+    width: 90px;
+    margin: 0 auto;
+    color: white;
+    margin-top: 3%;
+    padding: 6px;
+    text-transform: lowercase;
+    font-weight: 100;
+}
+
+/* Individual modal styles with animations/transitions */
+
+/* Effect 1: Fade in and scale up */
+.md-effect-1 .md-content {
+	-webkit-transform: scale(0.7);
+	-moz-transform: scale(0.7);
+	-ms-transform: scale(0.7);
+	transform: scale(0.7);
+	opacity: 0;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.md-show.md-effect-1 .md-content {
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+	opacity: 1;
+}
+
+.contact p img {
+    width: 30px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 32em) {
+	body { font-size: 75%; }
+}
+
+@media only screen and (max-width: 767px) {
+    #modal-1 {
+        font-size: 12px;
+        width: 90%;
+    }
+
+    p.copy {
+    font-size: 12px;
+    padding: 0;
+    }
+
+    .md-content > div p {
+        padding: 3px 0;
+        line-height: 25px;
+    }
+
+    .contact p img {
+        width: 18px;
+    }
+    a.sourcehover {
+        font-size: 12px;
+    }
+
+    li img {
+        width: 18px;
+    }
+    .md-content > div {
+        padding: 2% 6%;
+    }
+
+    .md-content > div ul {
+        margin: 10px 0;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    #modal-1 {
+        width: 80%;
+    }
+}

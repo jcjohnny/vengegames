@@ -11,7 +11,7 @@
 /*DISABLED API */
 
 .api-disabled {
-    display: block;
+    display: none;
     position: fixed;
     left: 0;
     right: 0;
@@ -159,11 +159,12 @@ header {
 }
 
 .grid {
-    width: 70%;
+    max-width: 970px;
     margin: 0 auto;
 }
+
 .grid-1 {
-    width: 70%;
+    width: 970px;
     margin: 0 auto;
 }
 
@@ -574,9 +575,9 @@ span.chart2-4 {
 .click-if {
     display: block;
     position: absolute;
-    top: 462px;
     font-size: 13px;
     font-style: normal;
+    margin-top: 235px;
     color: black;
     background-color: #F4C63D;
     padding: 2px 29px;
@@ -660,6 +661,7 @@ span.chart2-4 {
     .ct-series-d .ct-bar, .ct-series-d .ct-line, .ct-series-d .ct-point, .ct-series-d .ct-slice-donut {
         stroke-width: 3px !important;
     }
+
 }
 
 @media only screen and (max-width: 400px) {
@@ -671,5 +673,17 @@ span.chart2-4 {
 
     .grid {
     margin-left: 38px;
+    }
+}
+
+@media only screen and (max-width: 980px) {
+    .grid, .grid-1 {
+        max-width: 630px;
+    }
+}
+
+@media only screen and (max-width: 645px) {
+    .grid, .grid-1 {
+        max-width: 280px;
     }
 }
