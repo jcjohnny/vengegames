@@ -13,14 +13,19 @@
   </head>
   <body ng-controller="revengeCtrl as revenges" ng-cloak>
 
-<!-- Navigation Bar -->
+    <!-- Navigation Bar -->
+    <!-- Navigation Bar -->
     <header>
     <ul class = "navplayers" >
         <div class = "app-name" ><a href="#" ng-click="revenges.indexPage(revenges.playerCards)" >VENGEGAMES <br> <span class="app-desc">tracking todays revenge games for the nba</span> </a></div>
         <li class = "navimages" ng-repeat="revenge in revenges.playerCards | orderBy:'-team'"> <a href="#" ng-click="revenges.createCharts([revenge, revenges.playerCards])" ><img src={{revenge.playerPicture}} alt="" ></a></li>
     </ul>
     </header>
+    <!-- End Navigation -->
+    <!-- End Navigation -->
 
+    <!-- About Modal -->
+    <!-- About Modal -->
     <div class="md-modal md-effect-1 " id="modal-1">
     <div class="md-content">
         <h3>VENGEGAMES</h3>
@@ -29,14 +34,16 @@
             <div class="md-close">Close</div>
         </div>
     </div>
-</div>
-
-            <div class="column">
-                <div class="md-trigger" data-modal="modal-1"><a href="#sel">ABOUT</a></div>
-            </div>
-
+    </div>
+    <div class="column">
+            <div class="md-trigger" data-modal="modal-1"><a href="#sel">ABOUT</a></div>
+    </div>
     <div class="md-overlay"></div><!-- the overlay element -->
+    <!-- End Overlay Modal -->
+    <!-- End Overlay Modal -->
 
+    <!-- Temporary Disabled API Notice-->
+    <!-- Temporary Disabled API Notice-->
     <div class="api-disabled">
     <div class="api-container">
         <h1>the PUBLIC NBA API is temporarily disabled for the ALL-STAR week</h1>
@@ -45,6 +52,8 @@
             <p>–– Check back next week, after February 20, for  usual, daily vengegames statuses ––</p>
     </div>
     </div>
+    <!-- End Temporary API notice -->
+    <!-- End Temporary API notice -->
 
     <section class="container" >
         <div class ="grid-1">
